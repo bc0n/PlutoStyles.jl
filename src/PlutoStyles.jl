@@ -86,7 +86,7 @@ overrides() = [
     }
 
     pkg-terminal>.scroller {
-        max-height: 100rem;
+        max-height: 70vh;
     }
     """, last),
     AddToFile(r"/Pluto/\w+/frontend(-dist)?/index(|\.\w+).css$", """
