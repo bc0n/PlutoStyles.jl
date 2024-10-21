@@ -79,6 +79,15 @@ overrides() = [
     pluto-input > .open.input_context_menu > ul, pluto-input > .open.input_context_menu {
         z-index: 31 !important;
     }
+
+    pluto-popup {
+        --max-size: 451px;
+        width: min(90vw,var(--max-size));
+    }
+
+    pkg-terminal>.scroller {
+        max-height: 100rem;
+    }
     """, last),
     AddToFile(r"/Pluto/\w+/frontend(-dist)?/index(|\.\w+).css$", """
     li.recent > a:after, li.running > a:after {
