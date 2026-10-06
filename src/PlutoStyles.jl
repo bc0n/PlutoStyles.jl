@@ -89,7 +89,7 @@ overrides() = [
         max-height: 70vh;
     }
     """, last),
-    AddToFile(r"/Pluto/\w+/frontend(-dist)?/index(|\.\w+).css$", """
+    AddToFile(r"/Pluto/\w+/frontend(-dist)?/(index|frontend)(|\.\w+).css$", """
     li.recent > a:after, li.running > a:after {
         display: block;
         content: attr(title);
@@ -117,7 +117,7 @@ function Pluto.asset_response(path; cacheable::Bool=false)
         override = first(filter(o -> is_match(o, path), overrides()))
         @debug "" path override
         response = Pluto.HTTP.Response(200, full_content(override, data))
-        push!(response.headers, "Content-Type" => Pluto.MIMEs.contenttype_from_mime(Pluto.MIMEs.mime_from_path(path)))
+        push!(response.headers, "Content-Type" => Pluto.MIMEs.contenttype_from_mime(Pluto.MIMEs.mime_from_path(path, MIME"application/octet-stream"())))
         push!(response.headers, "Access-Control-Allow-Origin" => "*")
         # don't add content-length and cache-control headings
         response
